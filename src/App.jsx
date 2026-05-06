@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiExternalLink, FiCode, FiDatabase, FiLayout, FiServer, FiCpu, FiAward, FiMessageSquare, FiCheckCircle, FiDownload, FiTrendingUp, FiBriefcase, FiLayers } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiExternalLink, FiCode, FiDatabase, FiLayout, FiServer, FiCpu, FiAward, FiMessageSquare, FiCheckCircle, FiDownload, FiTrendingUp, FiBriefcase, FiLayers, FiMenu, FiX } from 'react-icons/fi';
 import Background3D from './components/Background3D';
 import CursorGlow from './components/CursorGlow';
 import profileImg from './assets/profile.png';
@@ -58,6 +58,7 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [skillCategory, setSkillCategory] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -180,7 +181,7 @@ function App() {
             {/* Floating Futuristic Navbar */}
             <nav className="navbar glass-panel">
               <div className="nav-logo text-gradient">VT</div>
-              <div className="nav-links">
+              <div className="nav-links desktop-only">
                 <a href="#about">About</a>
                 <a href="#experience">Experience</a>
                 <a href="#skills">Skills</a>
@@ -188,7 +189,36 @@ function App() {
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
               </div>
+              <button 
+                className="mobile-menu-btn" 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle navigation menu"
+              >
+                {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              </button>
             </nav>
+
+            {/* Mobile Glassmorphic Dropdown Menu */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -15, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -15, scale: 0.95 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="mobile-nav-menu glass-panel"
+                >
+                  <div className="mobile-nav-links">
+                    <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+                    <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
+                    <a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a>
+                    <a href="#certifications" onClick={() => setIsMenuOpen(false)}>Certifications</a>
+                    <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a>
+                    <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <div className="container content-wrapper">
               {/* Hero Section */}

@@ -1143,3 +1143,343 @@ h1, h2, h3, h4, h5, h6 {
 .modal-actions {
   margin-top: 1rem;
 }
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE DESIGNS - PREMIUM MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+/* 1. Navbar & Mobile Hamburger Menu Styles */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.mobile-menu-btn:hover {
+  color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
+}
+
+.mobile-nav-menu {
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 500px;
+  padding: 1.5rem;
+  z-index: 99;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.mobile-nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  width: 100%;
+  text-align: center;
+  padding: 0.65rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+}
+
+.mobile-nav-links a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 2. Global Media Queries for Tablets & Phones */
+@media (max-width: 768px) {
+  /* Hide desktop menu, show mobile toggle button */
+  .nav-links.desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  .navbar {
+    top: 1rem;
+    width: calc(100% - 2rem);
+    padding: 0.6rem 1.25rem;
+  }
+
+  /* Prevent page horizontal scroll entirely */
+  body, html {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  /* Content Wrapper spacing on mobile */
+  .content-wrapper {
+    padding-top: 5rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Adjust section header margins & line heights */
+  .section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+  }
+
+  /* Maximize space within cards */
+  .card, .skill-card, .project-card, .contact-card {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+
+  .card-title, .project-title, .skill-title {
+    font-size: 1.35rem !important;
+  }
+
+  /* Hero Section responsive sizing */
+  .hero-grid {
+    padding: 1rem 0 !important;
+    gap: 2rem !important;
+    min-height: auto !important;
+  }
+
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem !important;
+    margin-bottom: 1.75rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Stack Hero CTA Buttons elegantly on Mobile */
+  .hero-actions {
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100% !important;
+    max-width: 320px;
+    padding: 0.8rem 1.5rem !important;
+  }
+
+  /* Project Image sizing inside stacked layout */
+  .project-image {
+    height: 13rem !important;
+  }
+
+  .project-desc {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Center skills filter categories and make them tidy */
+  .skills-filter-container {
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .filter-tab {
+    padding: 0.4rem 0.9rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Education Timeline adjustment */
+  .edu-timeline::after {
+    left: 8px !important;
+  }
+  .edu-dot {
+    left: 3px !important;
+    width: 10px !important;
+    height: 10px !important;
+  }
+  .edu-item {
+    padding-left: 1.5rem !important;
+  }
+  .edu-title {
+    font-size: 1.1rem !important;
+  }
+
+  /* Glassmorphic Project details modal on tablets/phones */
+  .modal-card {
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+    max-height: 92vh !important;
+  }
+
+  .modal-close {
+    top: 1rem !important;
+    right: 1rem !important;
+    font-size: 1.75rem !important;
+  }
+
+  .modal-grid {
+    gap: 1.5rem !important;
+  }
+
+  .modal-image-wrapper {
+    height: 180px !important;
+    min-height: 180px !important;
+  }
+
+  .modal-title {
+    font-size: 1.6rem !important;
+  }
+
+  .modal-subtitle {
+    font-size: 0.95rem !important;
+  }
+
+  .modal-overview {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .modal-section-title {
+    font-size: 0.8rem !important;
+  }
+
+  .modal-list li {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* 3. Micro Media Query for Very Small Mobile Screen Viewports (< 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 1.5rem);
+    top: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .mobile-nav-menu {
+    top: 4.5rem;
+    width: calc(100% - 1.5rem);
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+  }
+
+  /* Single column for stats items to prevent text wrapping/squeezing issues */
+  .stats-banner {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    padding: 1.25rem !important;
+    margin: 2.5rem 0 !important;
+    border-radius: 16px !important;
+  }
+
+  .stat-item {
+    gap: 0.75rem !important;
+  }
+
+  .stat-icon-wrapper {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    font-size: 1rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.35rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.75rem !important;
+  }
+
+  /* Tighten spacing in card contents */
+  .card, .skill-card, .project-card, .contact-card {
+    padding: 1.15rem !important;
+    border-radius: 14px !important;
+  }
+
+  .skill-icon-wrapper {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .skill-icon-wrapper svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  .skills-filter-container {
+    gap: 0.4rem !important;
+  }
+
+  .filter-tab {
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .about-text {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Form spacing in contact card */
+  .contact-card {
+    padding: 1.25rem !important;
+  }
+
+  .contact-form {
+    gap: 1rem !important;
+  }
+
+  .form-input {
+    padding: 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .footer {
+    margin-top: 4rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    font-size: 0.75rem !important;
+  }
+}
