@@ -1171,8 +1171,9 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav-menu {
   position: fixed;
   top: 5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 1rem;
+  right: 1rem;
+  margin: 0 auto;
   width: calc(100% - 2rem);
   max-width: 500px;
   padding: 1.5rem;
@@ -1391,6 +1392,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .mobile-nav-menu {
     top: 4.5rem;
+    left: 0.75rem;
+    right: 0.75rem;
     width: calc(100% - 1.5rem);
     padding: 1.25rem;
     border-radius: 16px;
