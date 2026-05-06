@@ -77,11 +77,25 @@ function App() {
     }
   };
 
+  const sanitizeInput = (text) => {
+    if (typeof text !== 'string') return '';
+    return text
+      .replace(/<[^>]*>/g, '') // Strip out standard HTML tags
+      .replace(/[<>]/g, '');   // Ensure any standalone angle brackets are cleaned
+  };
+
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.target);
+    const rawName = e.target.name.value;
+    const rawEmail = e.target.email.value;
+    const rawMessage = e.target.message.value;
+
+    const formData = new FormData();
+    formData.append("name", sanitizeInput(rawName));
+    formData.append("email", rawEmail); // Email validation is handled natively by the input type="email"
+    formData.append("message", sanitizeInput(rawMessage));
     formData.append("access_key", "31b27e08-bcf2-44e2-9bac-0aeee9429c5b");
 
     try {
@@ -576,15 +590,39 @@ function App() {
                         >
                           <div className="form-group">
                             <label className="form-label">Name</label>
-                            <input type="text" name="name" className="form-input" placeholder="Rahul Sharma" required />
+                            <input 
+                              type="text" 
+                              name="name" 
+                              className="form-input" 
+                              placeholder="Rahul Sharma" 
+                              maxLength={80}
+                              pattern="^[A-Za-z\s.\-']+$"
+                              title="Please enter a valid name using only letters, spaces, dots or dashes."
+                              required 
+                            />
                           </div>
                           <div className="form-group">
                             <label className="form-label">Email</label>
-                            <input type="email" name="email" className="form-input" placeholder="rahul@example.com" required />
+                            <input 
+                              type="email" 
+                              name="email" 
+                              className="form-input" 
+                              placeholder="rahul@example.com" 
+                              maxLength={100}
+                              required 
+                            />
                           </div>
                           <div className="form-group">
                             <label className="form-label">Message</label>
-                            <textarea name="message" className="form-input textarea" placeholder="Hey Vedant, loved your 3D portfolio! Let's collaborate." rows="4" required></textarea>
+                            <textarea 
+                              name="message" 
+                              className="form-input textarea" 
+                              placeholder="Hey Vedant, loved your 3D portfolio! Let's collaborate." 
+                              rows="4" 
+                              maxLength={1000}
+                              minLength={10}
+                              required
+                            ></textarea>
                           </div>
                           <button type="submit" disabled={isSubmitting} className="btn btn-primary w-full">
                             <FiMessageSquare className="icon-sm" /> {isSubmitting ? "Sending..." : "Send Message"}
