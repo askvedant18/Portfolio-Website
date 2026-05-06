@@ -265,7 +265,7 @@ function App() {
                     <a href="https://github.com/askvedant18" target="_blank" rel="noreferrer" className="btn btn-outline">
                       <FiGithub className="icon-sm" /> GitHub
                     </a>
-                    <a href="https://linkedin.com/in/vedanttiwari" target="_blank" rel="noreferrer" className="btn btn-outline">
+                    <a href="https://www.linkedin.com/in/vedant-tiwari-00287b271" target="_blank" rel="noreferrer" className="btn btn-outline">
                       <FiLinkedin className="icon-sm" /> LinkedIn
                     </a>
                   </motion.div>
